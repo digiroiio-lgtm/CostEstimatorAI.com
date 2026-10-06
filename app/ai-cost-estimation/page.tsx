@@ -188,7 +188,9 @@ export default function AiCostEstimationPage() {
           <Link href={PAGES.whatIs.path}>fundamentals of cost estimation</Link>, then see how it applies to{" "}
           <Link href={PAGES.project.path}>projects</Link>, to{" "}
           <Link href={PAGES.construction.path}>construction</Link> and to other{" "}
-          <Link href={PAGES.useCases.path}>use cases</Link>.
+          <Link href={PAGES.useCases.path}>use cases</Link>. If you are assessing tools, read about the{" "}
+          <Link href={PAGES.aiEstimator.path}>AI cost estimator</Link> category and{" "}
+          <Link href={PAGES.software.path}>cost estimation software</Link>.
         </p>
       </ArticleSection>
 

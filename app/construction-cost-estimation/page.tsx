@@ -161,7 +161,8 @@ export default function ConstructionCostEstimationPage() {
           ]}
         />
         <p>
-          See <Link href={PAGES.ai.path}>AI Cost Estimation</Link> for the general workflow and its risks.
+          See <Link href={PAGES.ai.path}>AI Cost Estimation</Link> for the general workflow and its risks, and{" "}
+          <Link href={PAGES.constructionAi.path}>construction estimating AI</Link> for what to evaluate in tools.
         </p>
       </ArticleSection>
 

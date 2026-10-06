@@ -17,21 +17,25 @@ export type PageEntry = {
   summary: string;
   /** Primary search intent this page owns. */
   intent: string;
+  /** "pillar" = informational guide; "commercial" = software/tools category resource. */
+  group: "pillar" | "commercial";
 };
 
 export const PAGES = {
   home: {
     path: "/",
+    group: "pillar",
     label: "Home",
     title: "AI Cost Estimator | CostEstimatorAI.com",
     description:
       "Learn how AI can assist cost estimation, project budgeting, construction estimating, forecasting and scenario analysis while keeping humans in control.",
     h1: "AI Cost Estimation for Better Budgeting and Project Decisions",
     summary: "The broad overview of AI-assisted cost estimation and how it fits into budgeting.",
-    intent: "AI cost estimator, AI cost estimation, cost estimation software",
+    intent: "AI cost estimation overview and category hub",
   },
   whatIs: {
     path: "/what-is-cost-estimation",
+    group: "pillar",
     label: "What Is Cost Estimation?",
     title: "What Is Cost Estimation? Process, Methods & Examples",
     description:
@@ -42,6 +46,7 @@ export const PAGES = {
   },
   ai: {
     path: "/ai-cost-estimation",
+    group: "pillar",
     label: "AI Cost Estimation",
     title: "AI Cost Estimation: Methods, Workflow & Limitations",
     description:
@@ -52,6 +57,7 @@ export const PAGES = {
   },
   project: {
     path: "/project-cost-estimation",
+    group: "pillar",
     label: "Project Cost Estimation",
     title: "Project Cost Estimation: Process, Methods & AI",
     description:
@@ -62,6 +68,7 @@ export const PAGES = {
   },
   construction: {
     path: "/construction-cost-estimation",
+    group: "pillar",
     label: "Construction Cost Estimation",
     title: "Construction Cost Estimation: Process & AI Assistance",
     description:
@@ -72,6 +79,7 @@ export const PAGES = {
   },
   useCases: {
     path: "/use-cases",
+    group: "pillar",
     label: "Use Cases",
     title: "AI Cost Estimation Use Cases Across Industries",
     description:
@@ -80,11 +88,47 @@ export const PAGES = {
     summary: "Twelve application areas, each with goal, inputs, AI-assisted task, human decision and output.",
     intent: "AI cost estimation use cases",
   },
+  aiEstimator: {
+    path: "/ai-cost-estimator",
+    group: "commercial",
+    label: "AI Cost Estimator",
+    title: "AI Cost Estimator: What It Is & What to Evaluate",
+    description:
+      "What an AI cost estimator is, which capabilities buyers evaluate, how it works and where human review is still required. A category guide.",
+    h1: "AI Cost Estimator: Capabilities, Workflow and Evaluation Criteria",
+    summary: "What an AI cost estimator does, how it works and what to evaluate before relying on one.",
+    intent: "AI cost estimator",
+  },
+  software: {
+    path: "/cost-estimation-software",
+    group: "commercial",
+    label: "Cost Estimation Software",
+    title: "Cost Estimation Software: Types, Features & Evaluation",
+    description:
+      "Compare the main types of cost estimation software, the features buyers evaluate, a typical workflow and where AI-assisted tools fit.",
+    h1: "Cost Estimation Software: Types, Features and How to Evaluate It",
+    summary: "Software categories, features and selection criteria for cost estimation, from spreadsheets to AI-assisted tools.",
+    intent: "cost estimation software",
+  },
+  constructionAi: {
+    path: "/construction-estimating-ai",
+    group: "commercial",
+    label: "Construction Estimating AI",
+    title: "Construction Estimating AI: Capabilities & Limits",
+    description:
+      "How AI is applied to construction estimating: drawing extraction, quantity identification, scope comparison, evaluation criteria and limits.",
+    h1: "Construction Estimating AI: Capabilities, Workflow and Limits",
+    summary: "How AI is applied to takeoff, scope review and cost classification, and what estimators still verify.",
+    intent: "construction estimating AI, AI construction estimating",
+  },
 } satisfies Record<string, PageEntry>;
 
 export type PageKey = keyof typeof PAGES;
 
 export const INDEXABLE_PAGES: PageEntry[] = Object.values(PAGES);
+
+export const PILLAR_PAGES = INDEXABLE_PAGES.filter((page) => page.group === "pillar");
+export const COMMERCIAL_PAGES = INDEXABLE_PAGES.filter((page) => page.group === "commercial");
 
 export const DOMAIN_PAGE = {
   path: "/domain",

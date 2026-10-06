@@ -16,6 +16,9 @@ const INDEXABLE = [
   "/project-cost-estimation",
   "/construction-cost-estimation",
   "/use-cases",
+  "/ai-cost-estimator",
+  "/cost-estimation-software",
+  "/construction-estimating-ai",
 ];
 const ALL = [...INDEXABLE, "/domain"];
 
@@ -140,7 +143,7 @@ for (const path of ALL) {
       if (faq) check(faq.mainEntity.every((q) => mainText.includes(q.name) && mainText.includes(q.acceptedAnswer.text)), `FAQPage (${faq.mainEntity.length} Q&A) matches visible FAQ`);
       const wp = graph.find((n) => n["@type"] === "WebPage");
       check(wp.url === expected, "WebPage.url equals canonical");
-      const banned = ["Review", "AggregateRating", "Product", "Offer", "Person"];
+      const banned = ["Review", "AggregateRating", "Product", "Offer", "Person", "SoftwareApplication"];
       check(!types.some((t) => banned.includes(t)), "no review/rating/offer/person schema");
     } catch (e) {
       fail(`JSON-LD parse error: ${e.message}`);
@@ -160,7 +163,7 @@ for (const path of ALL) {
   check(pct.length === (percentAllowed[path] ?? 0), `${path}: ${pct.length} percentage figure(s)${pct.length ? " " + JSON.stringify(pct) : ""}`);
   check(dollars.length === (path === "/what-is-cost-estimation" ? 8 : 0), `${path}: ${dollars.length} dollar figure(s)`);
   if (path === "/what-is-cost-estimation") check(/Illustrative arithmetic only/.test(text), "dollar figures are labeled illustrative");
-  const bad = text.match(/\b(testimonial|free trial|start free|sign up|log ?in|get a quote|case study|trusted by)\b/gi) ?? [];
+  const bad = text.match(/\b(testimonial|free trial|start free|sign up|log ?in|get a quote|case study|trusted by|our software|our platform|our tool|book a demo|request a demo|try it free)\b/gi) ?? [];
   check(bad.length === 0, `${path}: no fake-SaaS language${bad.length ? " " + JSON.stringify(bad) : ""}`);
 }
 
@@ -169,7 +172,7 @@ linkCheck();
 console.log("\nsitemap.xml and robots.txt");
 const sm = await (await fetch(BASE + "/sitemap.xml")).text();
 const locs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-check(locs.length === 6, `sitemap lists ${locs.length} URLs`);
+check(locs.length === 9, `sitemap lists ${locs.length} URLs`);
 for (const path of INDEXABLE) check(locs.includes(path === "/" ? ORIGIN : ORIGIN + path), `sitemap includes ${path}`);
 check(!locs.some((l) => l.includes("/domain")), "sitemap excludes /domain");
 const rb = await (await fetch(BASE + "/robots.txt")).text();

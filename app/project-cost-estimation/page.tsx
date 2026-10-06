@@ -183,7 +183,8 @@ export default function ProjectCostEstimationPage() {
           <li><strong>During delivery:</strong> compare actual costs with the baseline and project updated forecasts.</li>
         </ul>
         <p>
-          The workflow and its limits are covered in <Link href={PAGES.ai.path}>AI Cost Estimation</Link>.
+          The workflow and its limits are covered in <Link href={PAGES.ai.path}>AI Cost Estimation</Link>. For the
+          tooling landscape, see <Link href={PAGES.software.path}>cost estimation software</Link>.
         </p>
       </ArticleSection>
 

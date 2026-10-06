@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { DisclaimerBox } from "@/components/DisclaimerBox";
-import { INDEXABLE_PAGES, PAGES } from "@/lib/pages";
+import { COMMERCIAL_PAGES, PAGES, PILLAR_PAGES } from "@/lib/pages";
 import { DOMAIN_PAGE_PATH, FOOTER_DISCLAIMER, SITE_NAME } from "@/lib/site-config";
 
 export function Footer() {
-  const topics = INDEXABLE_PAGES.filter((page) => page.path !== PAGES.home.path);
+  const topics = PILLAR_PAGES.filter((page) => page.path !== PAGES.home.path);
   return (
     <footer className="site-footer">
       <div className="container">
@@ -28,14 +28,19 @@ export function Footer() {
               ))}
             </ul>
           </nav>
-          <div>
-            <p className="site-footer__heading">The domain</p>
+          <nav aria-label="Software and tools">
+            <p className="site-footer__heading">Software and tools</p>
             <ul className="site-footer__list">
+              {COMMERCIAL_PAGES.map((page) => (
+                <li key={page.path}>
+                  <Link href={page.path}>{page.label}</Link>
+                </li>
+              ))}
               <li>
                 <Link href={DOMAIN_PAGE_PATH}>About this domain</Link>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
         <DisclaimerBox title="Disclaimer">
           <p>{FOOTER_DISCLAIMER}</p>

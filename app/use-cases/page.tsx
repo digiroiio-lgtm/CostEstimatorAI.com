@@ -184,7 +184,8 @@ export default function UseCasesPage() {
           <>
             Estimating, budgeting and bidding for built environments and general projects. See also{" "}
             <Link href={PAGES.construction.path}>Construction Cost Estimation</Link> and{" "}
-            <Link href={PAGES.project.path}>Project Cost Estimation</Link>.
+            <Link href={PAGES.project.path}>Project Cost Estimation</Link>. For the tooling side, see{" "}
+            <Link href={PAGES.constructionAi.path}>construction estimating AI</Link>.
           </>
         }
       >
@@ -212,7 +213,9 @@ export default function UseCasesPage() {
       >
         <Group items={analysis} />
         <p>
-          New to the fundamentals? Start with <Link href={PAGES.whatIs.path}>What Is Cost Estimation?</Link>
+          New to the fundamentals? Start with <Link href={PAGES.whatIs.path}>What Is Cost Estimation?</Link> To
+          compare tools, see the <Link href={PAGES.aiEstimator.path}>AI cost estimator</Link> and{" "}
+          <Link href={PAGES.software.path}>cost estimation software</Link> guides.
         </p>
       </ArticleSection>
 

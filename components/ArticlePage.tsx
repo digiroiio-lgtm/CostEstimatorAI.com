@@ -14,6 +14,10 @@ type Props = {
   subtitle?: ReactNode;
   toc: TocItem[];
   faqs?: FaqItem[];
+  /** Override the related-pages block (used by the commercial category pages). */
+  related?: { title?: string; paths: string[] };
+  /** Optional extra block rendered after the article, after related pages. */
+  after?: ReactNode;
   children: ReactNode;
 };
 
@@ -25,7 +29,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 /** Shared shell for the pillar pages: hero, breadcrumbs, table of contents, JSON-LD, related links. */
-export function ArticlePage({ page, answer, subtitle, toc, faqs, children }: Props) {
+export function ArticlePage({ page, answer, subtitle, toc, faqs, related, after, children }: Props) {
   return (
     <>
       <JsonLd data={articleGraph(page, faqs)} />
@@ -47,7 +51,10 @@ export function ArticlePage({ page, answer, subtitle, toc, faqs, children }: Pro
           <div className="page__main">{children}</div>
         </div>
       </div>
-      <RelatedPages current={page.path} />
+      <div className="container">
+        <RelatedPages current={page.path} title={related?.title} paths={related?.paths} />
+      </div>
+      {after}
     </>
   );
 }

@@ -5,14 +5,14 @@ type Props = {
   /** Path of the current page, excluded from the list. */
   current?: string;
   title?: string;
-  /** Specific paths to show; defaults to every pillar page except the current one. */
+  /** Specific paths to show; defaults to every informational pillar page except the current one. */
   paths?: string[];
 };
 
 /** Internal-link block pointing to the other pillar pages. */
 export function RelatedPages({ current, title = "Continue Learning", paths }: Props) {
   const pages: PageEntry[] = INDEXABLE_PAGES.filter((page) =>
-    paths ? paths.includes(page.path) : page.path !== current && page.path !== "/",
+    paths ? paths.includes(page.path) : page.group === "pillar" && page.path !== current && page.path !== "/",
   );
   return (
     <section className="section" aria-labelledby="related-heading">

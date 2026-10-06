@@ -234,7 +234,8 @@ export default function WhatIsCostEstimationPage() {
           past projects, while people keep responsibility for assumptions and approval. See{" "}
           <Link href={PAGES.ai.path}>AI Cost Estimation</Link> for the workflow, or go to{" "}
           <Link href={PAGES.project.path}>Project Cost Estimation</Link> and{" "}
-          <Link href={PAGES.construction.path}>Construction Cost Estimation</Link> for applied detail.
+          <Link href={PAGES.construction.path}>Construction Cost Estimation</Link> for applied detail. To compare
+          tools, see <Link href={PAGES.software.path}>cost estimation software</Link>.
         </p>
       </ArticleSection>
 

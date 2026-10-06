@@ -16,7 +16,7 @@ import { Cite, SourceCitation } from "@/components/SourceCitation";
 import { UseCaseCard } from "@/components/UseCaseCard";
 import { homeGraph, type FaqItem } from "@/lib/jsonld";
 import { buildMetadata } from "@/lib/metadata";
-import { PAGES } from "@/lib/pages";
+import { INDEXABLE_PAGES, PAGES } from "@/lib/pages";
 import { SALE_CTA_LABEL } from "@/lib/site-config";
 
 const page = PAGES.home;
@@ -139,6 +139,11 @@ export default function HomePage() {
           <Link href={PAGES.ai.path} className="inline-cta">
             Read more: AI Cost Estimation →
           </Link>
+        </p>
+        <p>
+          Comparing tools? See what to evaluate in an <Link href={PAGES.aiEstimator.path}>AI cost estimator</Link>,
+          the main types of <Link href={PAGES.software.path}>cost estimation software</Link> and how AI applies to{" "}
+          <Link href={PAGES.constructionAi.path}>construction estimating</Link>.
         </p>
       </ArticleSection>
 
@@ -296,7 +301,10 @@ export default function HomePage() {
 
       <SourceCitation ids={["gao"]} />
 
-      <RelatedPages title="Explore the Guides" />
+      <RelatedPages
+        title="Explore the Guides"
+        paths={INDEXABLE_PAGES.filter((p) => p.path !== PAGES.home.path).map((p) => p.path)}
+      />
     </div>
   );
 }

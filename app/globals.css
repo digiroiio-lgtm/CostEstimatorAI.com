@@ -292,3 +292,4 @@ li { margin-bottom: 0.35em; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .anatomy__h { font-weight: 700; font-size: 0.95rem; margin: 0 0 0.4rem; }
+.asset-note { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 1rem; margin: 0 0 2rem; max-width: var(--measure); }
